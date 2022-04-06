@@ -30,28 +30,28 @@ class Board extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: const <Widget>[
-                Square(),
-                Square(),
-                Square(),
+              children: <Widget>[
+                Square(value: 1.toString()),
+                Square(value: 2.toString()),
+                Square(value: 3.toString()),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: const <Widget>[
-                Square(),
-                Square(),
-                Square(),
+              children: <Widget>[
+                Square(value: 4.toString()),
+                const Square(),
+                Square(value: 6.toString()),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: const <Widget>[
-                Square(),
-                Square(),
-                Square(),
+              children: <Widget>[
+                Square(value: 7.toString()),
+                Square(value: 8.toString()),
+                Square(value: 9.toString()),
               ],
             ),
           ],
@@ -62,7 +62,9 @@ class Board extends StatelessWidget {
 }
 
 class Square extends StatelessWidget {
-  const Square({Key? key}) : super(key: key);
+  final String value;
+
+  const Square({Key? key, this.value = ''}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +72,12 @@ class Square extends StatelessWidget {
       decoration: BoxDecoration(border: Border.all()),
       width: 100.0,
       height: 100.0,
+      child: Center(
+        child: Text(
+          value,
+          textScaleFactor: 5.0,
+        ),
+      ),
     );
   }
 }
