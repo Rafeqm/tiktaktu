@@ -1,0 +1,10 @@
+# [text files]
+*                   text=auto
+*.lock              text eol=lf
+generated_plugin*   text eol=lf
+*.rc                text eol=crlf
+
+# [binary files]
+*.png binary filter=lfs diff=lfs merge=lfs
+*.jpg binary filter=lfs diff=lfs merge=lfs
+*.ttf binary filter=lfs diff=lfs merge=lfs
