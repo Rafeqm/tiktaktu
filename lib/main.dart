@@ -30,28 +30,28 @@ class Board extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Square(value: 1.toString()),
-                Square(value: 2.toString()),
-                Square(value: 3.toString()),
+              children: const <Widget>[
+                Square(),
+                Square(),
+                Square(),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Square(value: 4.toString()),
-                const Square(),
-                Square(value: 6.toString()),
+              children: const <Widget>[
+                Square(),
+                Square(),
+                Square(),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Square(value: 7.toString()),
-                Square(value: 8.toString()),
-                Square(value: 9.toString()),
+              children: const <Widget>[
+                Square(),
+                Square(),
+                Square(),
               ],
             ),
           ],
@@ -61,10 +61,15 @@ class Board extends StatelessWidget {
   }
 }
 
-class Square extends StatelessWidget {
-  final String value;
+class Square extends StatefulWidget {
+  const Square({Key? key}) : super(key: key);
 
-  const Square({Key? key, this.value = ''}) : super(key: key);
+  @override
+  State<Square> createState() => _SquareState();
+}
+
+class _SquareState extends State<Square> {
+  String _mark = '';
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +78,14 @@ class Square extends StatelessWidget {
       width: 100.0,
       height: 100.0,
       child: Center(
-        child: Text(
-          value,
-          textScaleFactor: 5.0,
+        child: TextButton(
+          onPressed: () => setState(() {
+            _mark = 'X';
+          }),
+          child: Text(
+            _mark,
+            textScaleFactor: 5.0,
+          ),
         ),
       ),
     );
