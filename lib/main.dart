@@ -17,8 +17,24 @@ class TiktaktuApp extends StatelessWidget {
   }
 }
 
-class Board extends StatelessWidget {
+class Board extends StatefulWidget {
   const Board({Key? key}) : super(key: key);
+
+  @override
+  State<Board> createState() => _BoardState();
+}
+
+class _BoardState extends State<Board> {
+  final List<dynamic> _squares = List.filled(9, null);
+
+  Widget _buildSquare(int index) {
+    return Square(
+      onPressed: () => setState(() {
+        _squares[index] = 'X';
+      }),
+      mark: _squares[index],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +46,28 @@ class Board extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: const <Widget>[
-                Square(),
-                Square(),
-                Square(),
+              children: <Widget>[
+                _buildSquare(0),
+                _buildSquare(1),
+                _buildSquare(2),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: const <Widget>[
-                Square(),
-                Square(),
-                Square(),
+              children: <Widget>[
+                _buildSquare(3),
+                _buildSquare(4),
+                _buildSquare(5),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
-              children: const <Widget>[
-                Square(),
-                Square(),
-                Square(),
+              children: <Widget>[
+                _buildSquare(6),
+                _buildSquare(7),
+                _buildSquare(8),
               ],
             ),
           ],
@@ -61,15 +77,15 @@ class Board extends StatelessWidget {
   }
 }
 
-class Square extends StatefulWidget {
-  const Square({Key? key}) : super(key: key);
+class Square extends StatelessWidget {
+  const Square({
+    Key? key,
+    required this.onPressed,
+    required this.mark,
+  }) : super(key: key);
 
-  @override
-  State<Square> createState() => _SquareState();
-}
-
-class _SquareState extends State<Square> {
-  String _mark = '';
+  final VoidCallback onPressed;
+  final String? mark;
 
   @override
   Widget build(BuildContext context) {
@@ -79,11 +95,9 @@ class _SquareState extends State<Square> {
       height: 100.0,
       child: Center(
         child: TextButton(
-          onPressed: () => setState(() {
-            _mark = 'X';
-          }),
+          onPressed: onPressed,
           child: Text(
-            _mark,
+            mark ?? ' ',
             textScaleFactor: 5.0,
           ),
         ),
