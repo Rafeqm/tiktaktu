@@ -25,21 +25,34 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
-  final List<dynamic> _squares = List.filled(9, null);
+  final List<String?> _squares = List.filled(9, null);
   bool _xIsNext = true;
 
   Widget _buildSquare(int index) {
     return Square(
-      onPressed: () => setState(() {
-        _squares[index] = _xIsNext ? 'X' : 'O';
-        _xIsNext = !_xIsNext;
-      }),
+      onPressed: () {
+        if (_squares[index] != null || _decideWinner(_squares) != null) {
+          return;
+        }
+        setState(() {
+          _squares[index] = _xIsNext ? 'X' : 'O';
+          _xIsNext = !_xIsNext;
+        });
+      },
       mark: _squares[index],
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final String? winner = _decideWinner(_squares);
+    late final String status;
+    if (winner != null) {
+      status = 'Winner: $winner';
+    } else {
+      status = 'Next player: ${_xIsNext ? 'X' : 'O'}';
+    }
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -74,12 +87,37 @@ class _BoardState extends State<Board> {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text('Next player: ${_xIsNext ? 'X' : 'O'}'),
-            )
+              child: Text(status),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  String? _decideWinner(List<String?> squares) {
+    const List<List<int>> lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (List<int> line in lines) {
+      int a = line[0];
+      int b = line[1];
+      int c = line[2];
+
+      if (squares[a] != null &&
+          squares[a] == squares[b] &&
+          squares[a] == squares[c]) {
+        return squares[a];
+      }
+    }
+    return null;
   }
 }
 
