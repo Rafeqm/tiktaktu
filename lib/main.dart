@@ -26,11 +26,13 @@ class Board extends StatefulWidget {
 
 class _BoardState extends State<Board> {
   final List<dynamic> _squares = List.filled(9, null);
+  bool _xIsNext = true;
 
   Widget _buildSquare(int index) {
     return Square(
       onPressed: () => setState(() {
-        _squares[index] = 'X';
+        _squares[index] = _xIsNext ? 'X' : 'O';
+        _xIsNext = !_xIsNext;
       }),
       mark: _squares[index],
     );
@@ -70,6 +72,10 @@ class _BoardState extends State<Board> {
                 _buildSquare(8),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text('Next player: ${_xIsNext ? 'X' : 'O'}'),
+            )
           ],
         ),
       ),
