@@ -32,10 +32,13 @@ class _BoardState extends State<Board> {
   Widget build(BuildContext context) {
     final String? winner = _decideWinner(_squares);
     late final String status;
-    if (winner != null) {
-      status = 'Winner: $winner';
-    } else {
+
+    if (winner == null) {
       status = 'Next player: ${_xIsNext ? 'X' : 'O'}';
+    } else if (winner == 'Draw') {
+      status = 'DRAW. Well played!';
+    } else {
+      status = 'Winner: $winner';
     }
 
     return Scaffold(
@@ -44,7 +47,6 @@ class _BoardState extends State<Board> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 _buildSquare(0),
@@ -53,7 +55,6 @@ class _BoardState extends State<Board> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 _buildSquare(3),
@@ -62,7 +63,6 @@ class _BoardState extends State<Board> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 _buildSquare(6),
@@ -99,6 +99,7 @@ class _BoardState extends State<Board> {
         }
         final List<String?> squares = _squares.toList();
         squares[index] = _xIsNext ? 'X' : 'O';
+
         setState(() {
           _squares = List.unmodifiable(squares);
           _xIsNext = !_xIsNext;
@@ -119,6 +120,7 @@ class _BoardState extends State<Board> {
       [0, 4, 8],
       [2, 4, 6],
     ];
+
     for (List<int> line in lines) {
       int a = line[0];
       int b = line[1];
@@ -129,6 +131,10 @@ class _BoardState extends State<Board> {
           squares[a] == squares[c]) {
         return squares[a];
       }
+    }
+
+    if (_squares.every((mark) => mark != null)) {
+      return 'Draw';
     }
     return null;
   }
