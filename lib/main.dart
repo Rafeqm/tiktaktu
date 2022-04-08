@@ -25,7 +25,7 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
-  List<String?> _squares = List.filled(9, null);
+  List<String?> _squares = List.unmodifiable(List.filled(9, null));
   bool _xIsNext = true;
 
   @override
@@ -97,9 +97,10 @@ class _BoardState extends State<Board> {
         if (_squares[index] != null || _decideWinner(_squares) != null) {
           return;
         }
-        _squares[index] = _xIsNext ? 'X' : 'O';
-
+        final List<String?> squares = _squares.toList();
+        squares[index] = _xIsNext ? 'X' : 'O';
         setState(() {
+          _squares = List.unmodifiable(squares);
           _xIsNext = !_xIsNext;
         });
       },
@@ -135,7 +136,7 @@ class _BoardState extends State<Board> {
   _resetBoard() {
     final List<String?> squares = List.filled(9, null);
     setState(() {
-      _squares = squares;
+      _squares = List.unmodifiable(squares);
       _xIsNext = true;
     });
   }
