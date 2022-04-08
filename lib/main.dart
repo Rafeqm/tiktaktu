@@ -25,23 +25,8 @@ class Board extends StatefulWidget {
 }
 
 class _BoardState extends State<Board> {
-  final List<String?> _squares = List.filled(9, null);
+  List<String?> _squares = List.filled(9, null);
   bool _xIsNext = true;
-
-  Widget _buildSquare(int index) {
-    return Square(
-      onPressed: () {
-        if (_squares[index] != null || _decideWinner(_squares) != null) {
-          return;
-        }
-        setState(() {
-          _squares[index] = _xIsNext ? 'X' : 'O';
-          _xIsNext = !_xIsNext;
-        });
-      },
-      mark: _squares[index],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +74,36 @@ class _BoardState extends State<Board> {
               padding: const EdgeInsets.all(20.0),
               child: Text(status),
             ),
+            Builder(
+              builder: (BuildContext context) {
+                if (winner == null) {
+                  return Container();
+                }
+                return ElevatedButton(
+                  onPressed: _resetBoard,
+                  child: const Text('Restart'),
+                );
+              },
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildSquare(int index) {
+    return Square(
+      onPressed: () {
+        if (_squares[index] != null || _decideWinner(_squares) != null) {
+          return;
+        }
+        _squares[index] = _xIsNext ? 'X' : 'O';
+
+        setState(() {
+          _xIsNext = !_xIsNext;
+        });
+      },
+      mark: _squares[index],
     );
   }
 
@@ -118,6 +130,14 @@ class _BoardState extends State<Board> {
       }
     }
     return null;
+  }
+
+  _resetBoard() {
+    final List<String?> squares = List.filled(9, null);
+    setState(() {
+      _squares = squares;
+      _xIsNext = true;
+    });
   }
 }
 
