@@ -14,15 +14,6 @@ class _BoardState extends State<Board> {
   @override
   Widget build(BuildContext context) {
     final String? winner = _decideWinner(_squares);
-    late final String status;
-
-    if (winner == null) {
-      status = 'Next player: ${_xIsNext ? 'X' : 'O'}';
-    } else if (winner == 'Draw') {
-      status = 'DRAW. Well played!';
-    } else {
-      status = 'Winner: $winner';
-    }
 
     return Center(
       child: Column(
@@ -80,9 +71,21 @@ class _BoardState extends State<Board> {
               _buildSquare(8),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text(status),
+          Builder(
+            builder: (BuildContext context) {
+              late final String status;
+              if (winner == null) {
+                status = 'Next player: ${_xIsNext ? 'X' : 'O'}';
+              } else if (winner == 'Draw') {
+                status = 'DRAW. Well played!';
+              } else {
+                status = 'Winner: $winner';
+              }
+              return Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(status),
+              );
+            },
           ),
           Builder(
             builder: (BuildContext context) {
