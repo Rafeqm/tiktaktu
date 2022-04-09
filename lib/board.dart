@@ -172,15 +172,21 @@ class Square extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 100.0,
-      height: 100.0,
-      child: Center(
-        child: TextButton(
-          onPressed: onPressed,
-          child: Text(
-            mark ?? ' ',
-            textScaleFactor: 5.0,
+    return SizedBox.square(
+      dimension: 100.0,
+      child: TextButton(
+        onPressed: onPressed,
+        child: Center(
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              if (mark == null) {
+                return const SizedBox();
+              }
+              return Icon(
+                mark == 'X' ? Icons.close : Icons.circle,
+                size: constraints.maxWidth,
+              );
+            },
           ),
         ),
       ),
