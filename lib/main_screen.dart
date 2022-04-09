@@ -9,7 +9,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
+        child: ElevatedButton.icon(
           onPressed: () {
             Navigator.push(
               context,
@@ -19,7 +19,8 @@ class MainScreen extends StatelessWidget {
               ),
             );
           },
-          child: const Text('Play'),
+          icon: const Icon(Icons.games),
+          label: const Text('Play'),
         ),
       ),
     );

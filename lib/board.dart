@@ -62,9 +62,10 @@ class _BoardState extends State<Board> {
                 if (winner == null) {
                   return Container();
                 }
-                return ElevatedButton(
+                return ElevatedButton.icon(
                   onPressed: _resetBoard,
-                  child: const Text('Restart'),
+                  icon: const Icon(Icons.refresh),
+                  label: const Text('Restart'),
                 );
               },
             ),
