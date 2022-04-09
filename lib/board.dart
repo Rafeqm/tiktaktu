@@ -33,23 +33,51 @@ class _BoardState extends State<Board> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 _buildSquare(0),
-                _buildSquare(1),
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border.symmetric(
+                      vertical: BorderSide(width: 8.0),
+                    ),
+                  ),
+                  child: _buildSquare(1),
+                ),
                 _buildSquare(2),
               ],
             ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                _buildSquare(3),
-                _buildSquare(4),
-                _buildSquare(5),
-              ],
+            Container(
+              decoration: const BoxDecoration(
+                border: Border.symmetric(
+                  horizontal: BorderSide(width: 8.0),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  _buildSquare(3),
+                  Container(
+                    decoration: const BoxDecoration(
+                      border: Border.symmetric(
+                        vertical: BorderSide(width: 8.0),
+                      ),
+                    ),
+                    child: _buildSquare(4),
+                  ),
+                  _buildSquare(5),
+                ],
+              ),
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 _buildSquare(6),
-                _buildSquare(7),
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border.symmetric(
+                      vertical: BorderSide(width: 8.0),
+                    ),
+                  ),
+                  child: _buildSquare(7),
+                ),
                 _buildSquare(8),
               ],
             ),
@@ -144,8 +172,7 @@ class Square extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(border: Border.all()),
+    return SizedBox(
       width: 100.0,
       height: 100.0,
       child: Center(
