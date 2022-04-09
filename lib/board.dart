@@ -100,6 +100,14 @@ class _BoardState extends State<Board> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton.small(
+        child: const Icon(Icons.question_mark),
+        tooltip: 'How to play?',
+        elevation: 3,
+        hoverElevation: 4,
+        highlightElevation: 6,
+        onPressed: () {},
+      ),
     );
   }
 
