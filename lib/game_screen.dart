@@ -9,7 +9,14 @@ class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Board(),
+      body: SafeArea(
+        child: Stack(
+          children: const <Widget>[
+            BackButton(),
+            Board(),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton.small(
         child: const Icon(Icons.question_mark),
         tooltip: 'How to play',
