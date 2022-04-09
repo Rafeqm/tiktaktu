@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:tiktaktu/board.dart';
+import 'package:tiktaktu/rules.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({Key? key}) : super(key: key);
@@ -11,11 +12,31 @@ class GameScreen extends StatelessWidget {
       body: const Board(),
       floatingActionButton: FloatingActionButton.small(
         child: const Icon(Icons.question_mark),
-        tooltip: 'How to play?',
+        tooltip: 'How to play',
         elevation: 3,
         hoverElevation: 4,
         highlightElevation: 6,
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext _context) {
+              return AlertDialog(
+                title: const Text('How to Play'),
+                content: const SingleChildScrollView(
+                  child: Text(rules),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(_context, rootNavigator: true).pop();
+                    },
+                    child: const Text('OK'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
       ),
     );
   }
