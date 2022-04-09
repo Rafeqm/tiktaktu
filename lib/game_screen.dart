@@ -22,8 +22,18 @@ class GameScreen extends StatelessWidget {
             builder: (BuildContext _context) {
               return AlertDialog(
                 title: const Text('How to Play'),
-                content: const SingleChildScrollView(
-                  child: Text(rules),
+                content: Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.black12,
+                        width: 2.5,
+                      ),
+                    ),
+                  ),
+                  child: const SingleChildScrollView(
+                    child: Text(rules),
+                  ),
                 ),
                 actions: <Widget>[
                   TextButton(
