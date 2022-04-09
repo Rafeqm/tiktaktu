@@ -63,9 +63,9 @@ class _BoardState extends State<Board> {
                   return Container();
                 }
                 return ElevatedButton.icon(
-                  onPressed: _resetBoard,
                   icon: const Icon(Icons.refresh),
                   label: const Text('Restart'),
+                  onPressed: _resetBoard,
                 );
               },
             ),
@@ -77,6 +77,7 @@ class _BoardState extends State<Board> {
 
   Widget _buildSquare(int index) {
     return Square(
+      mark: _squares[index],
       onPressed: () {
         if (_squares[index] != null || _decideWinner(_squares) != null) {
           return;
@@ -89,7 +90,6 @@ class _BoardState extends State<Board> {
           _xIsNext = !_xIsNext;
         });
       },
-      mark: _squares[index],
     );
   }
 
@@ -135,12 +135,12 @@ class _BoardState extends State<Board> {
 class Square extends StatelessWidget {
   const Square({
     Key? key,
-    required this.onPressed,
     required this.mark,
+    required this.onPressed,
   }) : super(key: key);
 
-  final VoidCallback onPressed;
   final String? mark;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
