@@ -24,89 +24,79 @@ class _BoardState extends State<Board> {
       status = 'Winner: $winner';
     }
 
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Row(
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              _buildSquare(0),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border.symmetric(
+                    vertical: BorderSide(width: 8.0),
+                  ),
+                ),
+                child: _buildSquare(1),
+              ),
+              _buildSquare(2),
+            ],
+          ),
+          Container(
+            decoration: const BoxDecoration(
+              border: Border.symmetric(
+                horizontal: BorderSide(width: 8.0),
+              ),
+            ),
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                _buildSquare(0),
+                _buildSquare(3),
                 Container(
                   decoration: const BoxDecoration(
                     border: Border.symmetric(
                       vertical: BorderSide(width: 8.0),
                     ),
                   ),
-                  child: _buildSquare(1),
+                  child: _buildSquare(4),
                 ),
-                _buildSquare(2),
+                _buildSquare(5),
               ],
             ),
-            Container(
-              decoration: const BoxDecoration(
-                border: Border.symmetric(
-                  horizontal: BorderSide(width: 8.0),
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  _buildSquare(3),
-                  Container(
-                    decoration: const BoxDecoration(
-                      border: Border.symmetric(
-                        vertical: BorderSide(width: 8.0),
-                      ),
-                    ),
-                    child: _buildSquare(4),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              _buildSquare(6),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border.symmetric(
+                    vertical: BorderSide(width: 8.0),
                   ),
-                  _buildSquare(5),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                _buildSquare(6),
-                Container(
-                  decoration: const BoxDecoration(
-                    border: Border.symmetric(
-                      vertical: BorderSide(width: 8.0),
-                    ),
-                  ),
-                  child: _buildSquare(7),
                 ),
-                _buildSquare(8),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text(status),
-            ),
-            Builder(
-              builder: (BuildContext context) {
-                if (winner == null) {
-                  return Container();
-                }
-                return ElevatedButton.icon(
-                  icon: const Icon(Icons.refresh),
-                  label: const Text('Restart'),
-                  onPressed: _resetBoard,
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton.small(
-        child: const Icon(Icons.question_mark),
-        tooltip: 'How to play?',
-        elevation: 3,
-        hoverElevation: 4,
-        highlightElevation: 6,
-        onPressed: () {},
+                child: _buildSquare(7),
+              ),
+              _buildSquare(8),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(status),
+          ),
+          Builder(
+            builder: (BuildContext context) {
+              if (winner == null) {
+                return Container();
+              }
+              return ElevatedButton.icon(
+                icon: const Icon(Icons.refresh),
+                label: const Text('Restart'),
+                onPressed: _resetBoard,
+              );
+            },
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:tiktaktu/board.dart';
+import 'package:tiktaktu/game_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute<void>(
-                builder: (BuildContext context) => const Board(),
+                builder: (BuildContext context) => const GameScreen(),
                 maintainState: false,
               ),
             );
