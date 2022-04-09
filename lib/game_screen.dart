@@ -12,7 +12,9 @@ class GameScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: const <Widget>[
-            BackButton(),
+            CircleAvatar(
+              child: BackButton(),
+            ),
             Board(),
           ],
         ),
