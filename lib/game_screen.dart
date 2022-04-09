@@ -35,6 +35,12 @@ class GameScreen extends StatelessWidget {
                     child: Text(rules),
                   ),
                 ),
+                contentPadding: const EdgeInsets.fromLTRB(
+                  24.0,
+                  20.0,
+                  24.0,
+                  0.0,
+                ),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
