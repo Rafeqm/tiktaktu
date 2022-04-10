@@ -7,9 +7,14 @@ class InstructionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
-        child: Text(rules),
+        child: Column(
+          children: <Widget>[
+            Image.asset('assets/images/instruction_cover_image.jpeg'),
+            const Text(rules),
+          ],
+        ),
       ),
     );
   }
