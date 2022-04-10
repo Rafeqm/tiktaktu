@@ -11,7 +11,19 @@ class InstructionScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Image.asset('assets/images/instruction_cover_image.jpeg'),
+            Stack(
+              children: <Widget>[
+                Image.asset(
+                  'assets/images/instruction_cover_image.jpeg',
+                  filterQuality: FilterQuality.medium,
+                ),
+                const SafeArea(
+                  child: CircleAvatar(
+                    child: BackButton(),
+                  ),
+                )
+              ],
+            ),
             const Padding(
               padding: EdgeInsets.all(18.0),
               child: Text(rules),
