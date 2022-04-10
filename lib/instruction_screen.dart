@@ -17,9 +17,11 @@ class InstructionScreen extends StatelessWidget {
                   'assets/images/instruction_cover_image.jpg',
                   filterQuality: FilterQuality.medium,
                 ),
-                const SafeArea(
+                SafeArea(
                   child: CircleAvatar(
-                    child: BackButton(),
+                    backgroundColor: Colors.blueGrey,
+                    foregroundColor: Theme.of(context).backgroundColor,
+                    child: const BackButton(),
                   ),
                 )
               ],
