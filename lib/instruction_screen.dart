@@ -14,7 +14,7 @@ class InstructionScreen extends StatelessWidget {
             Stack(
               children: <Widget>[
                 Image.asset(
-                  'assets/images/instruction_cover_image.jpeg',
+                  'assets/images/instruction_cover_image.jpg',
                   filterQuality: FilterQuality.medium,
                 ),
                 const SafeArea(
