@@ -198,7 +198,9 @@ class Square extends StatelessWidget {
                 return const SizedBox();
               }
               return Icon(
-                mark == 'X' ? Icons.close : Icons.circle,
+                mark == 'X'
+                    ? Icons.cancel_presentation
+                    : Icons.motion_photos_on,
                 size: constraints.maxWidth,
                 color: Colors.brown,
               );

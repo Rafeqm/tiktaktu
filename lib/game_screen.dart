@@ -20,7 +20,7 @@ class GameScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.small(
-        child: const Icon(Icons.question_mark),
+        child: const Icon(Icons.emoji_objects_outlined),
         tooltip: 'How to play',
         elevation: 3,
         hoverElevation: 4,
