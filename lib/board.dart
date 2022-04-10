@@ -19,58 +19,6 @@ class _BoardState extends State<Board> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              _buildSquare(0),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    vertical: BorderSide(width: 8.0),
-                  ),
-                ),
-                child: _buildSquare(1),
-              ),
-              _buildSquare(2),
-            ],
-          ),
-          Container(
-            decoration: const BoxDecoration(
-              border: Border.symmetric(
-                horizontal: BorderSide(width: 8.0),
-              ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                _buildSquare(3),
-                Container(
-                  decoration: const BoxDecoration(
-                    border: Border.symmetric(
-                      vertical: BorderSide(width: 8.0),
-                    ),
-                  ),
-                  child: _buildSquare(4),
-                ),
-                _buildSquare(5),
-              ],
-            ),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              _buildSquare(6),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    vertical: BorderSide(width: 8.0),
-                  ),
-                ),
-                child: _buildSquare(7),
-              ),
-              _buildSquare(8),
-            ],
-          ),
           Builder(
             builder: (BuildContext context) {
               late final String status;
@@ -87,15 +35,81 @@ class _BoardState extends State<Board> {
               );
             },
           ),
+          Card(
+            color: Theme.of(context).primaryColorLight,
+            elevation: 10.0,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    _buildSquare(0),
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border.symmetric(
+                          vertical: BorderSide(width: 8.0),
+                        ),
+                      ),
+                      child: _buildSquare(1),
+                    ),
+                    _buildSquare(2),
+                  ],
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border.symmetric(
+                      horizontal: BorderSide(width: 8.0),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      _buildSquare(3),
+                      Container(
+                        decoration: const BoxDecoration(
+                          border: Border.symmetric(
+                            vertical: BorderSide(width: 8.0),
+                          ),
+                        ),
+                        child: _buildSquare(4),
+                      ),
+                      _buildSquare(5),
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    _buildSquare(6),
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border.symmetric(
+                          vertical: BorderSide(width: 8.0),
+                        ),
+                      ),
+                      child: _buildSquare(7),
+                    ),
+                    _buildSquare(8),
+                  ],
+                ),
+              ],
+            ),
+          ),
           Builder(
             builder: (BuildContext context) {
               if (winner == null) {
-                return Container();
+                return Container(
+                  height: 60.0,
+                );
               }
-              return ElevatedButton.icon(
-                icon: const Icon(Icons.refresh),
-                label: const Text('Restart'),
-                onPressed: _resetBoard,
+              return Container(
+                padding: const EdgeInsets.only(top: 12.0),
+                child: ElevatedButton.icon(
+                  icon: const Icon(Icons.refresh),
+                  label: const Text('Restart'),
+                  onPressed: _resetBoard,
+                ),
               );
             },
           ),
@@ -186,6 +200,7 @@ class Square extends StatelessWidget {
               return Icon(
                 mark == 'X' ? Icons.close : Icons.circle,
                 size: constraints.maxWidth,
+                color: Colors.brown,
               );
             },
           ),
