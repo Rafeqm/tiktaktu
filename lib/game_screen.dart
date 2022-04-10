@@ -11,16 +11,23 @@ class GameScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Stack(
-          children: const <Widget>[
-            Board(),
-            CircleAvatar(
-              child: BackButton(),
+          children: <Widget>[
+            const Board(),
+            OutlinedButton.icon(
+              icon: const BackButton(color: Colors.blueGrey),
+              label: const Text(
+                'Main menu',
+                style: TextStyle(color: Colors.blueGrey),
+              ),
+              onPressed: () => Navigator.pop(context),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton.small(
         child: const Icon(Icons.emoji_objects_outlined),
+        backgroundColor: Theme.of(context).dialogBackgroundColor,
+        foregroundColor: Colors.blueGrey,
         tooltip: 'How to play',
         elevation: 3,
         hoverElevation: 4,
@@ -51,11 +58,20 @@ class GameScreen extends StatelessWidget {
                   0.0,
                 ),
                 actions: <Widget>[
-                  TextButton(
+                  TextButton.icon(
+                    icon: const Icon(
+                      Icons.check_circle_outline_outlined,
+                      color: Colors.brown,
+                    ),
+                    label: const Text(
+                      'Got it',
+                      style: TextStyle(
+                        color: Colors.brown,
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.of(_context, rootNavigator: true).pop();
                     },
-                    child: const Text('OK'),
                   ),
                 ],
               );
