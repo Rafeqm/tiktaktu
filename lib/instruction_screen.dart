@@ -8,11 +8,14 @@ class InstructionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Image.asset('assets/images/instruction_cover_image.jpeg'),
-            const Text(rules),
+            const Padding(
+              padding: EdgeInsets.all(18.0),
+              child: Text(rules),
+            ),
           ],
         ),
       ),
