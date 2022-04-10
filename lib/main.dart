@@ -10,9 +10,9 @@ class TiktaktuApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'TikTaktu',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
       ),
       home: const MainScreen(),
     );
