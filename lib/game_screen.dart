@@ -13,7 +13,7 @@ class GameScreen extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             const Board(),
-            OutlinedButton.icon(
+            TextButton.icon(
               icon: const BackButton(color: Colors.blueGrey),
               label: const Text(
                 'Main menu',

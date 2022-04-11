@@ -18,10 +18,13 @@ class InstructionScreen extends StatelessWidget {
                   filterQuality: FilterQuality.medium,
                 ),
                 SafeArea(
-                  child: CircleAvatar(
-                    backgroundColor: Colors.blueGrey,
-                    foregroundColor: Theme.of(context).backgroundColor,
-                    child: const BackButton(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.blueGrey,
+                      foregroundColor: Theme.of(context).backgroundColor,
+                      child: const BackButton(),
+                    ),
                   ),
                 )
               ],
