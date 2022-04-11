@@ -119,9 +119,7 @@ class _BoardState extends State<Board> {
           Builder(
             builder: (BuildContext context) {
               if (winner == null) {
-                return Container(
-                  height: 60.0,
-                );
+                return const SizedBox(height: 60.0);
               }
               return Container(
                 padding: const EdgeInsets.only(top: 12.0),

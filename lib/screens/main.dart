@@ -17,7 +17,10 @@ class MainScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
                 'TikTaktu',
-                style: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 36.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(height: 200.0),
@@ -25,7 +28,10 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.all(18.0),
               child: ElevatedButton.icon(
                 icon: const Icon(Icons.games, size: 36.0),
-                label: const Text('Play', style: TextStyle(fontSize: 36.0)),
+                label: const Text(
+                  'Play',
+                  style: TextStyle(fontSize: 36.0),
+                ),
                 style: ElevatedButton.styleFrom(
                   primary: Theme.of(context).primaryColorDark,
                   minimumSize: const Size(100, 50),

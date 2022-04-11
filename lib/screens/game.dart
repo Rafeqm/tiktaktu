@@ -37,8 +37,8 @@ class GameScreen extends StatelessWidget {
             context: context,
             builder: (BuildContext _context) {
               return AlertDialog(
-                title: const Text('How to Play'),
-                content: const Text(rulesShort),
+                title: const Text('How to Play', textAlign: TextAlign.center),
+                content: const Text(rulesShort, textAlign: TextAlign.justify),
                 contentPadding: const EdgeInsets.fromLTRB(
                   24.0,
                   20.0,
