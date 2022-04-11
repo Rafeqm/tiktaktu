@@ -21,22 +21,33 @@ class MainScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 200.0),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.games),
-              label: const Text('Play'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const GameScreen(),
-                    maintainState: false,
-                  ),
-                );
-              },
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.games, size: 36.0),
+                label: const Text('Play', style: TextStyle(fontSize: 36.0)),
+                style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).primaryColorDark,
+                  minimumSize: const Size(100, 50),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => const GameScreen(),
+                      maintainState: false,
+                    ),
+                  );
+                },
+              ),
             ),
-            ElevatedButton.icon(
+            OutlinedButton.icon(
               icon: const Icon(Icons.question_mark),
               label: const Text('How to Play'),
+              style: OutlinedButton.styleFrom(
+                primary: Colors.blueGrey,
+                side: BorderSide(color: Theme.of(context).primaryColorDark),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
