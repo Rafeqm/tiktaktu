@@ -30,7 +30,14 @@ class InstructionScreen extends StatelessWidget {
               ],
             ),
             const Padding(
-              padding: EdgeInsets.all(18.0),
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              child: Text(
+                'TikTaktu',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(18.0, 4.0, 18.0, 18.0),
               child: Text(rules),
             ),
           ],
