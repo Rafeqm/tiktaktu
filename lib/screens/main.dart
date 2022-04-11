@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:tiktaktu/game_screen.dart';
-import 'package:tiktaktu/instruction_screen.dart';
+import 'package:tiktaktu/screens/game.dart';
+import 'package:tiktaktu/screens/instruction.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:tiktaktu/main_screen.dart';
+import 'package:tiktaktu/screens/main.dart';
 
 void main() => runApp(const TiktaktuApp());
 
