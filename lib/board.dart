@@ -29,9 +29,29 @@ class _BoardState extends State<Board> {
               } else {
                 status = 'Winner: $winner';
               }
-              return Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(status),
+              return Container(
+                width: 150.0,
+                height: 30.0,
+                margin: const EdgeInsets.all(20.0),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  border: Border(
+                    top: BorderSide(
+                      color: Theme.of(context).primaryColorDark,
+                      width: 3.0,
+                    ),
+                    bottom: BorderSide(
+                      color: Theme.of(context).primaryColorDark,
+                      width: 3.0,
+                    ),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    status,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
               );
             },
           ),
@@ -108,6 +128,9 @@ class _BoardState extends State<Board> {
                 child: ElevatedButton.icon(
                   icon: const Icon(Icons.refresh),
                   label: const Text('Restart'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).primaryColorDark,
+                  ),
                   onPressed: _resetBoard,
                 ),
               );
