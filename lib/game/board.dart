@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:tiktaktu/game/square.dart';
+
 class Board extends StatefulWidget {
   const Board({Key? key}) : super(key: key);
 
@@ -122,7 +124,7 @@ class _BoardState extends State<Board> {
                 return const SizedBox(height: 60.0);
               }
               return Container(
-                padding: const EdgeInsets.only(top: 12.0),
+                margin: const EdgeInsets.only(top: 12.0),
                 child: ElevatedButton.icon(
                   icon: const Icon(Icons.refresh),
                   label: const Text('Restart'),
@@ -187,48 +189,11 @@ class _BoardState extends State<Board> {
     return null;
   }
 
-  _resetBoard() {
+  void _resetBoard() {
     final List<String?> squares = List.filled(9, null);
     setState(() {
       _squares = List.unmodifiable(squares);
       _xIsNext = true;
     });
-  }
-}
-
-class Square extends StatelessWidget {
-  const Square({
-    Key? key,
-    required this.mark,
-    required this.onPressed,
-  }) : super(key: key);
-
-  final String? mark;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox.square(
-      dimension: 100.0,
-      child: TextButton(
-        onPressed: onPressed,
-        child: Center(
-          child: LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-              if (mark == null) {
-                return const SizedBox();
-              }
-              return Icon(
-                mark == 'X'
-                    ? Icons.cancel_presentation
-                    : Icons.motion_photos_on,
-                size: constraints.maxWidth,
-                color: Colors.brown,
-              );
-            },
-          ),
-        ),
-      ),
-    );
   }
 }

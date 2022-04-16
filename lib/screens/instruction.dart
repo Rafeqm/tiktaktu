@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:tiktaktu/rules.dart';
+import 'package:tiktaktu/game/rules.dart';
 
 class InstructionScreen extends StatelessWidget {
   const InstructionScreen({Key? key}) : super(key: key);
@@ -18,8 +18,8 @@ class InstructionScreen extends StatelessWidget {
                   filterQuality: FilterQuality.medium,
                 ),
                 SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    margin: const EdgeInsets.all(8.0),
                     child: CircleAvatar(
                       backgroundColor: Colors.blueGrey,
                       foregroundColor: Theme.of(context).backgroundColor,
@@ -29,9 +29,9 @@ class InstructionScreen extends StatelessWidget {
                 )
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0),
-              child: Text(
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 20.0),
+              child: const Text(
                 'TikTaktu',
                 style: TextStyle(
                   fontSize: 24.0,
@@ -39,9 +39,9 @@ class InstructionScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(18.0, 4.0, 18.0, 18.0),
-              child: Text(rules, textAlign: TextAlign.justify),
+            Container(
+              margin: const EdgeInsets.fromLTRB(18.0, 4.0, 18.0, 18.0),
+              child: const Text(rules, textAlign: TextAlign.justify),
             ),
           ],
         ),
